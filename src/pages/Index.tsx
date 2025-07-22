@@ -292,87 +292,293 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Fleet Section */}
-      <section id="fleet" className="py-16">
+      {/* Routes Section */}
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Парк машин</h2>
+            <h2 className="text-3xl font-bold mb-4">География доставки</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Современный автопарк из более чем 50 единиц техники различной грузоподъемности
+              Организуем грузоперевозки по всей России - от Калининграда до Владивостока
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
             <div>
               <img 
-                src="/img/525024a6-7d35-4891-8273-12249204d43c.jpg" 
+                src="/img/1cc0d0e4-608b-4bcc-89a8-907ca8d554ee.jpg" 
+                alt="Карта России с маршрутами" 
+                className="w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold mb-6">Популярные направления</h3>
+              
+              <div className="space-y-4">
+                <div className="flex justify-between items-center p-4 bg-white rounded-lg shadow-sm">
+                  <div>
+                    <p className="font-semibold">Москва → Санкт-Петербург</p>
+                    <p className="text-sm text-muted-foreground">635 км, от 1 дня</p>
+                  </div>
+                  <Badge variant="secondary">Ежедневно</Badge>
+                </div>
+                
+                <div className="flex justify-between items-center p-4 bg-white rounded-lg shadow-sm">
+                  <div>
+                    <p className="font-semibold">Москва → Екатеринбург</p>
+                    <p className="text-sm text-muted-foreground">1416 км, от 2 дней</p>
+                  </div>
+                  <Badge variant="secondary">3 раза в неделю</Badge>
+                </div>
+                
+                <div className="flex justify-between items-center p-4 bg-white rounded-lg shadow-sm">
+                  <div>
+                    <p className="font-semibold">Москва → Новосибирск</p>
+                    <p className="text-sm text-muted-foreground">3354 км, от 4 дней</p>
+                  </div>
+                  <Badge variant="secondary">2 раза в неделю</Badge>
+                </div>
+                
+                <div className="flex justify-between items-center p-4 bg-white rounded-lg shadow-sm">
+                  <div>
+                    <p className="font-semibold">Санкт-Петербург → Казань</p>
+                    <p className="text-sm text-muted-foreground">1143 км, от 2 дней</p>
+                  </div>
+                  <Badge variant="secondary">2 раза в неделю</Badge>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg p-8 shadow-lg">
+            <h3 className="text-xl font-bold mb-6 text-center">Основные регионы доставки</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="space-y-2">
+                <h4 className="font-semibold text-primary">Центральный ФО</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Москва и Московская область</li>
+                  <li>• Тверская область</li>
+                  <li>• Ярославская область</li>
+                  <li>• Владимирская область</li>
+                </ul>
+              </div>
+              
+              <div className="space-y-2">
+                <h4 className="font-semibold text-primary">Северо-Западный ФО</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Санкт-Петербург и ЛО</li>
+                  <li>• Новгородская область</li>
+                  <li>• Псковская область</li>
+                  <li>• Архангельская область</li>
+                </ul>
+              </div>
+              
+              <div className="space-y-2">
+                <h4 className="font-semibold text-primary">Уральский ФО</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Екатеринбург</li>
+                  <li>• Челябинск</li>
+                  <li>• Пермь</li>
+                  <li>• Тюмень</li>
+                </ul>
+              </div>
+              
+              <div className="space-y-2">
+                <h4 className="font-semibold text-primary">Сибирский ФО</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Новосибирск</li>
+                  <li>• Омск</li>
+                  <li>• Красноярск</li>
+                  <li>• Иркутск</li>
+                </ul>
+              </div>
+              
+              <div className="space-y-2">
+                <h4 className="font-semibold text-primary">Южный ФО</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Ростов-на-Дону</li>
+                  <li>• Краснодар</li>
+                  <li>• Волгоград</li>
+                  <li>• Астрахань</li>
+                </ul>
+              </div>
+              
+              <div className="space-y-2">
+                <h4 className="font-semibold text-primary">Дальневосточный ФО</h4>
+                <ul className="text-sm text-muted-foreground space-y-1">
+                  <li>• Владивосток</li>
+                  <li>• Хабаровск</li>
+                  <li>• Благовещенск</li>
+                  <li>• Якутск</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Fleet Section */
+      <section id="fleet" className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Тентованный транспорт</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Специализируемся на перевозках тентованными автомобилями - универсальное решение для большинства грузов
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+            <div>
+              <img 
+                src="/img/054339ee-be6a-4d05-9628-0b3a42da60d1.jpg" 
                 alt="Тентованный грузовик" 
                 className="w-full h-auto rounded-lg shadow-lg"
               />
             </div>
             <div className="space-y-6">
+              <h3 className="text-xl font-bold mb-4">Преимущества тентованных грузовиков</h3>
+              
               <div className="flex items-start space-x-4">
                 <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mt-1">
-                  <Icon name="CheckCircle" size={16} className="text-primary" />
+                  <Icon name="Shield" size={16} className="text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-2">Грузоподъемность до 20 тонн</h3>
+                  <h4 className="font-semibold mb-2">Защита от погодных условий</h4>
                   <p className="text-muted-foreground">
-                    Автомобили различной грузоподъемности от 1.5 до 20 тонн для любых задач
+                    Тент надежно защищает груз от дождя, снега, пыли и ветра в любое время года
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
                 <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mt-1">
-                  <Icon name="CheckCircle" size={16} className="text-primary" />
+                  <Icon name="Package" size={16} className="text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-2">Современная техника</h3>
+                  <h4 className="font-semibold mb-2">Универсальность</h4>
                   <p className="text-muted-foreground">
-                    Автопарк обновляется ежегодно, средний возраст техники не превышает 3 лет
+                    Подходят для перевозки различных типов грузов: от паллетированной продукции до строительных материалов
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start space-x-4">
                 <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mt-1">
-                  <Icon name="CheckCircle" size={16} className="text-primary" />
+                  <Icon name="DollarSign" size={16} className="text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-2">GPS мониторинг</h3>
+                  <h4 className="font-semibold mb-2">Оптимальная стоимость</h4>
                   <p className="text-muted-foreground">
-                    Все автомобили оснащены системой спутникового мониторинга для отслеживания груза
+                    Экономичное решение с отличным соотношением цены и качества перевозки
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mt-1">
+                  <Icon name="Zap" size={16} className="text-primary" />
+                </div>
+                <div>
+                  <h4 className="font-semibold mb-2">Быстрая загрузка/разгрузка</h4>
+                  <p className="text-muted-foreground">
+                    Боковая и задняя загрузка значительно сокращают время погрузочных работ
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            <Card className="text-center">
-              <CardHeader>
-                <div className="text-3xl font-bold text-primary">1.5-3т</div>
-                <CardTitle>Малотоннажные</CardTitle>
-                <CardDescription>Городские и региональные перевозки</CardDescription>
-              </CardHeader>
-            </Card>
+          <div className="bg-muted/30 rounded-lg p-8 mb-12">
+            <h3 className="text-xl font-bold mb-6 text-center">Технические характеристики</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <Card className="text-center">
+                <CardHeader>
+                  <div className="text-3xl font-bold text-primary">1.5-3т</div>
+                  <CardTitle>Малотоннажные</CardTitle>
+                  <CardDescription className="space-y-1">
+                    <div>Длина: до 4.2м</div>
+                    <div>Ширина: 2.0м</div>
+                    <div>Высота: 2.2м</div>
+                  </CardDescription>
+                </CardHeader>
+              </Card>
 
-            <Card className="text-center">
-              <CardHeader>
-                <div className="text-3xl font-bold text-primary">5-10т</div>
-                <CardTitle>Среднетоннажные</CardTitle>
-                <CardDescription>Межрегиональные маршруты</CardDescription>
-              </CardHeader>
-            </Card>
+              <Card className="text-center">
+                <CardHeader>
+                  <div className="text-3xl font-bold text-primary">5-10т</div>
+                  <CardTitle>Среднетоннажные</CardTitle>
+                  <CardDescription className="space-y-1">
+                    <div>Длина: до 7.5м</div>
+                    <div>Ширина: 2.45м</div>
+                    <div>Высота: 2.7м</div>
+                  </CardDescription>
+                </CardHeader>
+              </Card>
 
-            <Card className="text-center">
-              <CardHeader>
-                <div className="text-3xl font-bold text-primary">15-20т</div>
-                <CardTitle>Большегрузные</CardTitle>
-                <CardDescription>Магистральные перевозки</CardDescription>
-              </CardHeader>
-            </Card>
+              <Card className="text-center">
+                <CardHeader>
+                  <div className="text-3xl font-bold text-primary">15-20т</div>
+                  <CardTitle>Большегрузные</CardTitle>
+                  <CardDescription className="space-y-1">
+                    <div>Длина: до 13.6м</div>
+                    <div>Ширина: 2.45м</div>
+                    <div>Высота: 2.9м</div>
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg p-8 shadow-lg">
+            <h3 className="text-xl font-bold mb-6 text-center">Типы грузов для тентованных перевозок</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="flex items-start space-x-3">
+                <Icon name="Box" size={20} className="text-primary mt-1" />
+                <div>
+                  <h4 className="font-semibold mb-1">Паллетированные грузы</h4>
+                  <p className="text-sm text-muted-foreground">Товары на европаллетах и стандартных поддонах</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <Icon name="Shirt" size={20} className="text-primary mt-1" />
+                <div>
+                  <h4 className="font-semibold mb-1">Текстиль и одежда</h4>
+                  <p className="text-sm text-muted-foreground">Готовая продукция легкой промышленности</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <Icon name="Wrench" size={20} className="text-primary mt-1" />
+                <div>
+                  <h4 className="font-semibold mb-1">Оборудование</h4>
+                  <p className="text-sm text-muted-foreground">Промышленное и бытовое оборудование</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <Icon name="Home" size={20} className="text-primary mt-1" />
+                <div>
+                  <h4 className="font-semibold mb-1">Стройматериалы</h4>
+                  <p className="text-sm text-muted-foreground">Сухие строительные смеси, плитка, утеплитель</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <Icon name="Car" size={20} className="text-primary mt-1" />
+                <div>
+                  <h4 className="font-semibold mb-1">Автозапчасти</h4>
+                  <p className="text-sm text-muted-foreground">Комплектующие для автомобилей</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start space-x-3">
+                <Icon name="Package" size={20} className="text-primary mt-1" />
+                <div>
+                  <h4 className="font-semibold mb-1">Товары народного потребления</h4>
+                  <p className="text-sm text-muted-foreground">Бытовая техника, мебель, игрушки</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
