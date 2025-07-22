@@ -1,12 +1,505 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
+import { Badge } from '@/components/ui/badge';
+import Icon from '@/components/ui/icon';
+import { useState } from 'react';
 
 const Index = () => {
+  const [formData, setFormData] = useState({
+    company: '',
+    contact: '',
+    phone: '',
+    email: '',
+    route: '',
+    cargo: '',
+    weight: '',
+    date: '',
+    comments: ''
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Заявка отправлена:', formData);
+    alert('Заявка принята! Мы свяжемся с вами в ближайшее время.');
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4 color-black text-black">Добро пожаловать!</h1>
-        <p className="text-xl text-gray-600">тут будет отображаться ваш проект</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      {/* Header */}
+      <header className="bg-white shadow-sm border-b">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <Icon name="Truck" size={32} className="text-primary" />
+              <div>
+                <h1 className="text-2xl font-bold text-primary">ТрансЛогистика</h1>
+                <p className="text-sm text-muted-foreground">Грузоперевозки по России</p>
+              </div>
+            </div>
+            <nav className="hidden md:flex space-x-6">
+              <a href="#services" className="text-foreground hover:text-primary transition-colors">Услуги</a>
+              <a href="#fleet" className="text-foreground hover:text-primary transition-colors">Парк машин</a>
+              <a href="#about" className="text-foreground hover:text-primary transition-colors">О компании</a>
+              <a href="#contacts" className="text-foreground hover:text-primary transition-colors">Контакты</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="bg-gradient-to-r from-primary to-primary/90 text-white py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <Badge className="mb-4 bg-white/20 text-white">Работаем с 2010 года</Badge>
+              <h1 className="text-5xl font-bold mb-6 leading-tight">
+                Грузоперевозки <br />
+                <span className="text-blue-200">по всей России</span>
+              </h1>
+              <p className="text-xl mb-8 text-blue-100">
+                Надежная доставка грузов тентованными автомобилями. 
+                Профессиональная логистика для вашего бизнеса.
+              </p>
+              <div className="grid grid-cols-2 gap-6 mb-8">
+                <div className="flex items-center space-x-3">
+                  <Icon name="Clock" size={24} className="text-blue-200" />
+                  <span>24/7 диспетчерская</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Icon name="Shield" size={24} className="text-blue-200" />
+                  <span>Страхование грузов</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Icon name="MapPin" size={24} className="text-blue-200" />
+                  <span>GPS мониторинг</span>
+                </div>
+                <div className="flex items-center space-x-3">
+                  <Icon name="Users" size={24} className="text-blue-200" />
+                  <span>Опытные водители</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Order Form */}
+            <Card className="bg-white/95 backdrop-blur-sm">
+              <CardHeader>
+                <CardTitle className="text-primary">Подать заявку на перевозку</CardTitle>
+                <CardDescription>Заполните форму и получите расчет стоимости</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="company">Компания</Label>
+                      <Input 
+                        id="company" 
+                        placeholder="ООО Компания"
+                        value={formData.company}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="contact">Контактное лицо *</Label>
+                      <Input 
+                        id="contact" 
+                        placeholder="Иван Иванов"
+                        required
+                        value={formData.contact}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="phone">Телефон *</Label>
+                      <Input 
+                        id="phone" 
+                        placeholder="+7 (999) 123-45-67"
+                        required
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="email">Email</Label>
+                      <Input 
+                        id="email" 
+                        type="email"
+                        placeholder="mail@company.ru"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="route">Маршрут *</Label>
+                    <Input 
+                      id="route" 
+                      placeholder="Москва - Санкт-Петербург"
+                      required
+                      value={formData.route}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="cargo">Тип груза</Label>
+                      <Input 
+                        id="cargo" 
+                        placeholder="Оборудование"
+                        value={formData.cargo}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="weight">Вес (т)</Label>
+                      <Input 
+                        id="weight" 
+                        placeholder="5"
+                        value={formData.weight}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="date">Дата отправки</Label>
+                    <Input 
+                      id="date" 
+                      type="date"
+                      value={formData.date}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+
+                  <div>
+                    <Label htmlFor="comments">Дополнительная информация</Label>
+                    <Textarea 
+                      id="comments" 
+                      placeholder="Особенности груза, требования к перевозке..."
+                      value={formData.comments}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+
+                  <Button type="submit" className="w-full">
+                    <Icon name="Send" size={16} className="mr-2" />
+                    Отправить заявку
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Наши услуги</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Полный спектр услуг по грузоперевозкам с профессиональным подходом к каждому заказу
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <Icon name="Truck" size={24} className="text-primary" />
+                </div>
+                <CardTitle>Тентованные грузовики</CardTitle>
+                <CardDescription>
+                  Перевозка грузов различных габаритов в закрытых тентованных фургонах
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <Icon name="MapPin" size={24} className="text-primary" />
+                </div>
+                <CardTitle>Межрегиональные перевозки</CardTitle>
+                <CardDescription>
+                  Доставка грузов по всей территории России с соблюдением сроков
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <Icon name="Package" size={24} className="text-primary" />
+                </div>
+                <CardTitle>Сборные грузы</CardTitle>
+                <CardDescription>
+                  Экономичная доставка небольших партий товаров в составе сборного груза
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <Icon name="Clock" size={24} className="text-primary" />
+                </div>
+                <CardTitle>Срочные перевозки</CardTitle>
+                <CardDescription>
+                  Экспресс-доставка грузов в кратчайшие сроки по индивидуальному графику
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <Icon name="Shield" size={24} className="text-primary" />
+                </div>
+                <CardTitle>Страхование грузов</CardTitle>
+                <CardDescription>
+                  Полное страховое покрытие груза на весь период транспортировки
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <Icon name="FileText" size={24} className="text-primary" />
+                </div>
+                <CardTitle>Документооборот</CardTitle>
+                <CardDescription>
+                  Полное ведение документооборота и отчетность по каждой перевозке
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Fleet Section */}
+      <section id="fleet" className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Парк машин</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Современный автопарк из более чем 50 единиц техники различной грузоподъемности
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center mb-12">
+            <div>
+              <img 
+                src="/img/525024a6-7d35-4891-8273-12249204d43c.jpg" 
+                alt="Тентованный грузовик" 
+                className="w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+            <div className="space-y-6">
+              <div className="flex items-start space-x-4">
+                <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mt-1">
+                  <Icon name="CheckCircle" size={16} className="text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">Грузоподъемность до 20 тонн</h3>
+                  <p className="text-muted-foreground">
+                    Автомобили различной грузоподъемности от 1.5 до 20 тонн для любых задач
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mt-1">
+                  <Icon name="CheckCircle" size={16} className="text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">Современная техника</h3>
+                  <p className="text-muted-foreground">
+                    Автопарк обновляется ежегодно, средний возраст техники не превышает 3 лет
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-4">
+                <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mt-1">
+                  <Icon name="CheckCircle" size={16} className="text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2">GPS мониторинг</h3>
+                  <p className="text-muted-foreground">
+                    Все автомобили оснащены системой спутникового мониторинга для отслеживания груза
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card className="text-center">
+              <CardHeader>
+                <div className="text-3xl font-bold text-primary">1.5-3т</div>
+                <CardTitle>Малотоннажные</CardTitle>
+                <CardDescription>Городские и региональные перевозки</CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="text-center">
+              <CardHeader>
+                <div className="text-3xl font-bold text-primary">5-10т</div>
+                <CardTitle>Среднетоннажные</CardTitle>
+                <CardDescription>Межрегиональные маршруты</CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="text-center">
+              <CardHeader>
+                <div className="text-3xl font-bold text-primary">15-20т</div>
+                <CardTitle>Большегрузные</CardTitle>
+                <CardDescription>Магистральные перевозки</CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">О компании ТрансЛогистика</h2>
+              <p className="text-muted-foreground mb-6 leading-relaxed">
+                Компания «ТрансЛогистика» работает на рынке грузоперевозок с 2010 года. 
+                За это время мы зарекомендовали себя как надежный партнер для сотен предприятий 
+                по всей России.
+              </p>
+              <p className="text-muted-foreground mb-8 leading-relaxed">
+                Мы специализируемся на перевозке грузов тентованными автомобилями различной 
+                грузоподъемности. Наш подход основан на профессионализме, надежности и 
+                индивидуальном подходе к каждому клиенту.
+              </p>
+
+              <div className="grid grid-cols-2 gap-6">
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-primary mb-2">1500+</div>
+                  <div className="text-muted-foreground">Довольных клиентов</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-primary mb-2">50+</div>
+                  <div className="text-muted-foreground">Единиц техники</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-primary mb-2">13 лет</div>
+                  <div className="text-muted-foreground">На рынке</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold text-primary mb-2">99%</div>
+                  <div className="text-muted-foreground">Выполненных заказов</div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <img 
+                src="/img/20817987-e823-4cff-9a29-85d6add2db81.jpg" 
+                alt="Логистический центр" 
+                className="w-full h-auto rounded-lg shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contacts Section */}
+      <section id="contacts" className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-4">Контакты</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Свяжитесь с нами удобным способом для получения консультации и расчета стоимости
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="text-center">
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Phone" size={24} className="text-primary" />
+                </div>
+                <CardTitle>Телефон</CardTitle>
+                <CardDescription>+7 (495) 123-45-67</CardDescription>
+                <CardDescription className="text-xs">Круглосуточно</CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="text-center">
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Mail" size={24} className="text-primary" />
+                </div>
+                <CardTitle>Email</CardTitle>
+                <CardDescription>info@translogistics.ru</CardDescription>
+                <CardDescription className="text-xs">Ответим в течение часа</CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="text-center">
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Icon name="MapPin" size={24} className="text-primary" />
+                </div>
+                <CardTitle>Адрес</CardTitle>
+                <CardDescription>г. Москва, ул. Транспортная, 15</CardDescription>
+                <CardDescription className="text-xs">Пн-Пт: 9:00-18:00</CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="text-center">
+              <CardHeader>
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Icon name="MessageCircle" size={24} className="text-primary" />
+                </div>
+                <CardTitle>Мессенджеры</CardTitle>
+                <CardDescription>WhatsApp, Telegram</CardDescription>
+                <CardDescription className="text-xs">Быстрая связь</CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-primary text-white py-8">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex items-center space-x-3 mb-4 md:mb-0">
+              <Icon name="Truck" size={28} className="text-white" />
+              <div>
+                <h3 className="text-xl font-bold">ТрансЛогистика</h3>
+                <p className="text-blue-200 text-sm">Надежные грузоперевозки</p>
+              </div>
+            </div>
+            <div className="text-center md:text-right text-blue-200">
+              <p>&copy; 2024 ТрансЛогистика. Все права защищены.</p>
+              <p className="text-sm mt-1">ИНН: 7712345678 | ОГРН: 1127746123456</p>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
